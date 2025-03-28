@@ -26,20 +26,12 @@ export interface IWorker extends Document {
         portfolio?: string;
         twitter?: string;
     };
-    technicalSkills?: {
-        languages?: string[];
-        frameworks?: string[];
-        databases?: string[];
-        tools?: string[];
-    };
     certifications?: {
         name: string;
         issuer: string;
         dateObtained: Date;
         expiryDate?: Date;
     }[];
-    profilePicture?: string;
-    resume?: string;
     availability?: {
         isAvailable?: boolean;
         availableFrom?: Date;
@@ -88,24 +80,14 @@ const workerSchema: Schema = new mongoose.Schema({
         portfolio: String,
         twitter: String
     },
-    technicalSkills: {
-        languages: [{ type: String }],
-        frameworks: [{ type: String }],
-        databases: [{ type: String }],
-        tools: [{ type: String }]
-    },
+    
     certifications: [{
         name: { type: String },
         issuer: { type: String },
         dateObtained: { type: Date },
         expiryDate: Date
     }],
-    profilePicture: {
-        type: String
-    },
-    resume: {
-        type: String
-    },
+    
     availability: {
         isAvailable: { type: Boolean },
         availableFrom: Date

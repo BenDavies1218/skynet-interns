@@ -8,10 +8,18 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(workers);
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
     await dbConnect();
 
+    debugger;
+
+    console.log("POST request received", request);
+
+    // console.log("POST request body", request.body);
+
     const body = await request.json();
-    const worker = await Worker.create(body);
+
+    console.log("POST request body", body.body);
+    const worker = await Worker.create(body.body);
     return NextResponse.json(worker);
 }
